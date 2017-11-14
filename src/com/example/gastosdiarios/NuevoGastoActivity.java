@@ -3,6 +3,7 @@ package com.example.gastosdiarios;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,8 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 
 import com.example.gastordiarios.model.*;
+import com.example.gastosdiarios.R.id;
 
 public class NuevoGastoActivity extends Activity {
 
@@ -23,6 +28,34 @@ public class NuevoGastoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_nuevo_gasto);
+		Button btn_administrar =(Button) findViewById(id.btn_admCateg);
+		Button btn_aceptar =(Button) findViewById(id.btn_crearGasto);
+		Button btn_cancelar =(Button) findViewById(id.btn_cancelarGasto);
+		
+		OnClickListener listener= new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent generalIntent=null;
+				if(v.getId()==R.id.btn_admCateg){
+					generalIntent=new Intent(getApplicationContext(),AbmCategoria.class);	
+				}else{
+					if (v.getId()==R.id.btn_crearGasto) {
+					
+				}else {
+				}
+					
+				}	
+				startActivity(generalIntent);
+			}
+		};
+		
+		btn_administrar.setOnClickListener(listener);
+		btn_aceptar.setOnClickListener(listener);
+		btn_cancelar.setOnClickListener(listener);
+		
+		
 		
 		CategoriasManejador _categoriasManejador=CategoriasManejador.getInstance(this);
 		//final ArrayList<Categorias> TodasCategorias=_categoriasManejador.SelectCategorias();

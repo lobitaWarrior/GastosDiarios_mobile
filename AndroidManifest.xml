@@ -30,6 +30,42 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gastosdiarios.MainActivity" />
         </activity>
+        <activity
+            android:name=".AbmCategoria"
+            android:label="@string/title_activity_abm_categoria"
+            android:parentActivityName=".NuevoGastoActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gastosdiarios.NuevoGastoActivity" />
+        </activity>
+        <activity
+            android:name=".NuevaCategoria"
+            android:label="@string/title_activity_nueva_categoria"
+            android:parentActivityName=".AbmCategoria" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gastosdiarios.AbmCategoria" />
+        </activity>
+        <activity
+            android:name=".ModificarCategoria"
+            android:label="@string/title_activity_modificar_categoria" >
+        </activity>
+        <activity
+            android:name=".ModCategoria"
+            android:label="@string/title_activity_mod_categoria"
+            android:parentActivityName=".AbmCategoria" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gastosdiarios.AbmCategoria" />
+        </activity>
+        <activity
+            android:name=".EliminarCategoria"
+            android:label="@string/title_activity_eliminar_categoria"
+            android:parentActivityName=".AbmCategoria" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gastosdiarios.AbmCategoria" />
+        </activity>
     </application>
 
 </manifest>

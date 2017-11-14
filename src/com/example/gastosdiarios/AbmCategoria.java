@@ -1,6 +1,6 @@
 package com.example.gastosdiarios;
 
-import java.util.ArrayList;
+import com.example.gastosdiarios.R.id;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,56 +10,44 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 
-import com.example.gastordiarios.model.*;
-import com.example.gastosdiarios.R.id;
-
-public class NuevoGastoActivity extends Activity {
+public class AbmCategoria extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_nuevo_gasto);
-		Button btn_administrar =(Button) findViewById(id.btn_admCateg);
-		Button btn_aceptar =(Button) findViewById(id.btn_crearGasto);
-		Button btn_cancelar =(Button) findViewById(id.btn_cancelarGasto);
-		
+		setContentView(R.layout.activity_abm_categoria);
+		Button btn_nueva =(Button) findViewById(id.BtnNueva);
+		Button btn_modificar =(Button) findViewById(id.BtnModificar);
+		Button btn_eliminar =(Button) findViewById(id.BtnEliminar);
 		OnClickListener listener= new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent generalIntent=null;
-				if(v.getId()==R.id.btn_admCateg){
-					generalIntent=new Intent(getApplicationContext(),AbmCategoria.class);	
-				}else{
-					if (v.getId()==R.id.btn_crearGasto) {
-					
-				}else {
-				}
-					
-				}	
-				startActivity(generalIntent);
+				if (v.getId()==R.id.BtnNueva) {
+					generalIntent=new Intent(getApplicationContext(),NuevaCategoria.class);
+				} else {
+					if (v.getId()==R.id.BtnModificar) {
+						generalIntent=new Intent(getApplicationContext(),ModCategoria.class);
+						
+					}else {
+						generalIntent=new Intent(getApplicationContext(),EliminarCategoria.class);
+					}
+				}startActivity(generalIntent);
 			}
+			
 		};
-		
-		btn_administrar.setOnClickListener(listener);
-		btn_aceptar.setOnClickListener(listener);
-		btn_cancelar.setOnClickListener(listener);
-		
-		
-		
-		CategoriasManejador _categoriasManejador=CategoriasManejador.getInstance(this);
-		
-		final ArrayList<Categorias> TodasCategorias=_categoriasManejador.SelectCategorias();
-		
+		btn_nueva.setOnClickListener(listener);
+		btn_modificar.setOnClickListener(listener);
+		btn_eliminar.setOnClickListener(listener);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.nuevo_gasto, menu);
+		getMenuInflater().inflate(R.menu.abm_categoria, menu);
 		return true;
 	}
 

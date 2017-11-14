@@ -34,7 +34,7 @@ public final class R {
         public static final int btn_reporte=0x7f080004;
         public static final int linearLayout1=0x7f080000;
         public static final int lst_gastos=0x7f080002;
-        public static final int spinner1=0x7f080006;
+        public static final int spn_categorias_nuevo_gasto=0x7f080006;
         public static final int textView1=0x7f080001;
         public static final int txt_descrip=0x7f080009;
         public static final int txt_monto=0x7f080008;

@@ -17,9 +17,9 @@ public class BaseDatos extends SQLiteOpenHelper {
 			+"FOREIGN KEY("+GastosContract.TableGastos.COLUMN_NAME_ID_CATEGORIA+") REFERENCES "
 			+CategoriasContract.TableCategoria.TABLE_NAME+"("+CategoriasContract.TableCategoria.COLUMN_NAME__ID+"))";
 	
-	private String sqlCreateCategorias="CREATE TABLE IF NOT EXISTS " + GastosContract.TableGastos.TABLE_NAME
-			+"("+GastosContract.TableGastos.COLUMN_NAME__ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-			+ GastosContract.TableGastos.COLUMN_NAME_DESCRIPCION+" INTEGER)";
+	private String sqlCreateCategorias="CREATE TABLE IF NOT EXISTS " + CategoriasContract.TableCategoria.TABLE_NAME
+			+"("+CategoriasContract.TableCategoria.COLUMN_NAME__ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
+			+ CategoriasContract.TableCategoria.COLUMN_NAME_DESCRIPCION+" INTEGER)";
 	
 	public BaseDatos(Context gastosManejador, String name, CursorFactory factory, int version) {
 		super(gastosManejador, name, factory, version);

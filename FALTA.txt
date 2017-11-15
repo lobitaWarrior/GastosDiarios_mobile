@@ -1,0 +1,4 @@
+validaciones logicas insert/update base datos (como no borrar una categoria q tiene gasto asignado)
+validaciones logicas negocio (como monto no puede ser letra ni 0)
+reporte tdos gastos
+reporte pantalla principal

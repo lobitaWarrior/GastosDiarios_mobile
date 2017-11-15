@@ -66,7 +66,7 @@ public class NuevoGastoActivity extends Activity {
 		spinner.setAdapter(adapter);
 		
 		
-		OnItemSelectedListener listener= new OnItemSelectedListener(){
+		OnItemSelectedListener listenerSpinner= new OnItemSelectedListener(){
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -81,7 +81,7 @@ public class NuevoGastoActivity extends Activity {
 			
 		};
 		
-		spinner.setOnItemSelectedListener(listener);
+		spinner.setOnItemSelectedListener(listenerSpinner);
 		
 	}
 

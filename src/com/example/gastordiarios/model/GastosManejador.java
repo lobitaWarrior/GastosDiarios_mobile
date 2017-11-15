@@ -1,41 +1,56 @@
 package com.example.gastordiarios.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import com.example.gastosdiarios.MainActivity;
 import com.example.gastosdiarios.bd.BaseDatos;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 
 public class GastosManejador {
 
 	private SQLiteDatabase db;
-	private BaseDatos b;
-
+	private static GastosManejador instance=null;
+	
 	//HACERLO SINGLETON
-	public GastosManejador(Context context ){
+	private GastosManejador(Context context ){
 
 		// creamos la base de datos
-		b = new BaseDatos(context, "GastosDiarios", null, 1);
+		BaseDatos b = new BaseDatos(context, "GastosDiarios", null, 1);
 		// la abrimos en modo escritura
 		db = b.getWritableDatabase();
 				
 	}
 	
-	public Gastos SelectTodosGastos(){
+	public Gastos[] SelectTodosGastos(){
 		
-		Gastos g=new Gastos();
-		//LLAMAR A METODO BD LLENAR MI NEW GASTOS
-		g.categoria="prueba";
-		g.descripcion="descripcion";
-		g.fecha="07/11/2017";
-		g.monto=(float) 15.25;
-		g.idCategoria=1;
-		
-		return g;
+		 String query = "SELECT * FROM Gastos ORDER BY nombre ASC";
+		 
+		 Cursor cursor = db.rawQuery(query, null); 
+		 
+		 ArrayList<Gastos> g= new ArrayList<Gastos>();
+		 //ABRO CURSOR
+		 cursor.moveToFirst();
+		 while(!cursor.isAfterLast()){
+			 Gastos object=new Gastos();
+			 object.categoria=cursor.getString(cursor.getColumnIndex("categoria"));
+			 object.descripcion=cursor.getString(cursor.getColumnIndex("descripcion"));
+			 object.fecha=cursor.getString(cursor.getColumnIndex("fecha"));
+			 object.idCategoria=cursor.getInt(cursor.getColumnIndex("idCategoria"));
+			 object.monto=cursor.getFloat(cursor.getColumnIndex("monto"));
+			 //LEO CURSOR
+			 cursor.moveToNext();
+		 }
+		 //CIERRO CURSOR
+		 cursor.close();
+		 
+		 return g.toArray(new Gastos[g.size()]);
+
 	}
 	
 	/*HACER QUE DEVUELVA SI SE INSERTO O NO SERIA PIOLA
@@ -54,5 +69,14 @@ public class GastosManejador {
 		//Insert the new row, returning the primary key value of the new row
 		db.insert(GastosContract.TableGastos.TABLE_NAME,null, values); 
 
+	}
+	
+	public static GastosManejador getInstance(Context context){
+		
+		if(instance==null){
+			instance=new GastosManejador(context);
+		}	
+		
+		return instance;
 	}
 }

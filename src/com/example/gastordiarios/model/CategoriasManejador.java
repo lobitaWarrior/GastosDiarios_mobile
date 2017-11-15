@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.gastosdiarios.bd.BaseDatos;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,12 +12,11 @@ import android.database.sqlite.SQLiteDatabase;
 public class CategoriasManejador {
 
 	private SQLiteDatabase db;
-	private BaseDatos b;
 	private static CategoriasManejador instance=null;
 	
 	private CategoriasManejador(Context context){
 		// creamos la base de datos
-		b = new BaseDatos(context, "GastosDiarios", null, 1);
+		BaseDatos b = new BaseDatos(context, "GastosDiarios", null, 1);
 		// la abrimos en modo escritura
 		db = b.getWritableDatabase();
 		
@@ -42,6 +42,34 @@ public class CategoriasManejador {
 		cursor.close();
 
 		return c.toArray(new Categorias[c.size()]);
+	}
+	
+	public void InsertCategoria(int id, String nombre){
+		ContentValues values = new ContentValues(); 
+		
+		values.put(CategoriasContract.TableCategoria.COLUMN_NAME__ID, id);
+		values.put(CategoriasContract.TableCategoria.COLUMN_NAME_DESCRIPCION,nombre);
+		
+		db.insert(CategoriasContract.TableCategoria.TABLE_NAME, null, values);
+	}
+	
+	public int CountCategorias(){
+		int total=0;
+		
+		String query = "SELECT COUNT(id) FROM Categorias ORDER BY nombre ASC";
+		
+		Cursor cursor=db.rawQuery(query, null);
+		if(cursor!=null){
+			//HAY DATOS
+			cursor.moveToFirst();
+			total=cursor.getInt(0);
+			//CIERRO CURSOR
+			cursor.close();
+		}
+		cursor.close();
+		
+		return total;
+		
 	}
 	
 	public static CategoriasManejador getInstance(Context context){

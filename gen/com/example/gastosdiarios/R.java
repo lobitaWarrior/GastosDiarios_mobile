@@ -25,10 +25,8 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-
         public static final int BtnCancelar=0x7f08000f;
         public static final int BtnCrear=0x7f08000e;
-
         public static final int BtnEliminar=0x7f080002;
         public static final int BtnModificar=0x7f080001;
         public static final int BtnNueva=0x7f080000;
@@ -45,13 +43,11 @@ public final class R {
         public static final int editText1=0x7f08000d;
         public static final int linearLayout1=0x7f080003;
         public static final int lst_gastos=0x7f080005;
-
         public static final int sp_CategoriasMod=0x7f080009;
         public static final int spn_categorias_nuevo_gasto=0x7f080010;
         public static final int textView1=0x7f080004;
         public static final int txt_descrip=0x7f080013;
         public static final int txt_monto=0x7f080012;
-
     }
     public static final class layout {
         public static final int activity_abm_categoria=0x7f030000;

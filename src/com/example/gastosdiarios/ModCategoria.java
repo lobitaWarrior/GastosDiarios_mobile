@@ -28,7 +28,7 @@ public class ModCategoria extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.mod_categoria, menu);
-		TextView texto = (TextView)findViewById(R.id.Txt_aModificar);
+		final TextView texto = (TextView)findViewById(R.id.Txt_aModificar);
 		CategoriasManejador _categoriasManejador=CategoriasManejador.getInstance(this);
 		final Categorias[] TodasCategorias=_categoriasManejador.SelectCategorias();
 		spinnerCat =(Spinner) findViewById(R.id.sp_CategoriasMod);
@@ -38,7 +38,7 @@ public class ModCategoria extends Activity {
 		OnItemSelectedListener listenerSpinner= new OnItemSelectedListener(){
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-			//texto.setText(Categorias[position]);
+			texto.setText(TodasCategorias[position].toString());
 			}
 
 			@Override

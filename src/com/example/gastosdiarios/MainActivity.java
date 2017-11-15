@@ -21,6 +21,8 @@ public class MainActivity extends Activity {
 		Button btn_nuevo =(Button) findViewById(id.btn_nuevoGasto);
 		Button btn_reporte =(Button) findViewById(id.btn_reporte);
 		
+		//TODO: LEER ARCHIVO CATEGORIAS, FIJARSE SI MI DB COUNT ES 0 SI LO ES INSERT SINO NADA
+		
 		OnClickListener listener= new OnClickListener(){
 
 			@Override

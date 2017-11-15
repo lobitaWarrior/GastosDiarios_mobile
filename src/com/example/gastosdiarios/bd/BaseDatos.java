@@ -8,6 +8,8 @@ import com.example.gastordiarios.model.*;
 
 public class BaseDatos extends SQLiteOpenHelper {
 
+	private static BaseDatos instance=null;
+	
 	private String sqlCreateGastos="CREATE TABLE IF NOT EXISTS " + GastosContract.TableGastos.TABLE_NAME
 			+"("+GastosContract.TableGastos.COLUMN_NAME__ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ GastosContract.TableGastos.COLUMN_NAME_ID_CATEGORIA+" INTEGER, "
@@ -21,7 +23,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 			+"("+CategoriasContract.TableCategoria.COLUMN_NAME__ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
 			+ CategoriasContract.TableCategoria.COLUMN_NAME_DESCRIPCION+" INTEGER)";
 	
-	public BaseDatos(Context gastosManejador, String name, CursorFactory factory, int version) {
+	private BaseDatos(Context gastosManejador, String name, CursorFactory factory, int version) {
 		super(gastosManejador, name, factory, version);
 	}
 
@@ -35,6 +37,15 @@ public class BaseDatos extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		
+	}
+	
+	//TODO: SEGUIR SINGLETON
+	
+	public static BaseDatos getBD(Context context,String name,CursorFactory factory, int version ){
+		if(instance==null)
+			instance=new BaseDatos(context, name, factory, version);
+		
+		return instance;
 	}
 
 }

@@ -21,7 +21,7 @@ public class GastosManejador {
 	private GastosManejador(Context context ){
 
 		// creamos la base de datos
-		BaseDatos b = new BaseDatos(context, "GastosDiarios", null, 1);
+		BaseDatos b = BaseDatos.getBD(context, "GastosDiarios", null, 1); //new BaseDatos(context, "GastosDiarios", null, 1);
 		// la abrimos en modo escritura
 		db = b.getWritableDatabase();
 				

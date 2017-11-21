@@ -38,9 +38,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		
 	}
-	
-	//TODO: SEGUIR SINGLETON
-	
+
 	public static BaseDatos getBD(Context context,String name,CursorFactory factory, int version ){
 		if(instance==null)
 			instance=new BaseDatos(context, name, factory, version);

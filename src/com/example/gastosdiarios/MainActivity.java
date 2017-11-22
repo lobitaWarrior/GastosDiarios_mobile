@@ -1,10 +1,21 @@
 package com.example.gastosdiarios;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URI;
 import java.security.GeneralSecurityException;
+import java.util.Scanner;
 
+import com.example.gastordiarios.model.CategoriasManejador;
 import com.example.gastosdiarios.R.id;
+import com.example.gastosdiarios.bd.BaseDatos;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,16 +24,35 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-
+	
+	private SQLiteDatabase db;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Button btn_nuevo =(Button) findViewById(id.btn_nuevoGasto);
 		Button btn_reporte =(Button) findViewById(id.btn_reporte);
-		
-		//TODO: LEER ARCHIVO CATEGORIAS, FIJARSE SI MI DB COUNT ES 0 SI LO ES INSERT SINO NADA
-		
+				
+		CategoriasManejador catManejador=CategoriasManejador.getInstance(this);
+		int categoriasExistentes = catManejador.CountCategorias();
+		String nombreCategoria;
+		int idCategoria;
+		if(categoriasExistentes==0){
+			try {
+				Scanner read = new Scanner (new File(getResources().openRawResource(R.raw.categorias)));
+				read.useDelimiter(";");
+				
+				while(read.hasNext()){
+					idCategoria=read.nextInt();
+					nombreCategoria=read.next();
+					catManejador.InsertCategoria(idCategoria,nombreCategoria);
+				}
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+
 		OnClickListener listener= new OnClickListener(){
 
 			@Override

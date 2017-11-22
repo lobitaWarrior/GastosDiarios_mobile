@@ -1,0 +1,6 @@
+1;ropa
+2;comida
+3;transporte
+4;novia/o
+6;alquiler
+7;juegos

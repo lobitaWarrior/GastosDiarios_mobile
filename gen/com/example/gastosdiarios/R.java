@@ -25,6 +25,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+
         public static final int BtnCancelar=0x7f09000f;
         public static final int BtnCrear=0x7f09000e;
         public static final int BtnEliminar=0x7f090002;
@@ -48,6 +49,7 @@ public final class R {
         public static final int textView1=0x7f090004;
         public static final int txt_descrip=0x7f090013;
         public static final int txt_monto=0x7f090012;
+
     }
     public static final class layout {
         public static final int activity_abm_categoria=0x7f030000;

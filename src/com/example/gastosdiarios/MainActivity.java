@@ -39,9 +39,10 @@ public class MainActivity extends Activity {
 		String nombreCategoria;
 		int idCategoria;
 		if(categoriasExistentes==0){
+			/*
 			try {
-				Scanner read = new Scanner (new File(getResources().openRawResource(R.raw.categorias)));
-				read.useDelimiter(";");
+				//Scanner read = new Scanner (new File(getResources().openRawResource(R.raw.categorias)));
+				//read.useDelimiter(";");
 				
 				while(read.hasNext()){
 					idCategoria=read.nextInt();
@@ -51,6 +52,7 @@ public class MainActivity extends Activity {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
+			*/
 		}
 
 		OnClickListener listener= new OnClickListener(){

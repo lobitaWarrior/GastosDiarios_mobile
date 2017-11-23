@@ -10,6 +10,9 @@ import java.security.GeneralSecurityException;
 import java.util.Scanner;
 
 import com.example.gastordiarios.model.CategoriasManejador;
+import com.example.gastordiarios.model.Gastos;
+import com.example.gastordiarios.model.GastosAdapter;
+import com.example.gastordiarios.model.GastosManejador;
 import com.example.gastosdiarios.R.id;
 import com.example.gastosdiarios.bd.BaseDatos;
 
@@ -22,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class MainActivity extends Activity {
 	
@@ -31,13 +35,18 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		Button btn_nuevo =(Button) findViewById(id.btn_nuevoGasto);
 		Button btn_reporte =(Button) findViewById(id.btn_reporte);
-				
+		ListView lst_gastos=(ListView) findViewById(id.lst_gastos);	
+		
 		CategoriasManejador catManejador=CategoriasManejador.getInstance(this);
+		GastosManejador gm=GastosManejador.getInstance(this);
+		
 		int categoriasExistentes = catManejador.CountCategorias();
 		String nombreCategoria;
 		int idCategoria;
+		
 		if(categoriasExistentes==0){
 			/*
 			try {
@@ -53,8 +62,11 @@ public class MainActivity extends Activity {
 				e.printStackTrace();
 			}
 			*/
-		}
-
+		}	
+		Gastos[] arrayGastos= gm.SelectTodosGastos();
+		GastosAdapter gastosAdapter=new GastosAdapter(this,arrayGastos);
+		lst_gastos.setAdapter(gastosAdapter);
+		
 		OnClickListener listener= new OnClickListener(){
 
 			@Override

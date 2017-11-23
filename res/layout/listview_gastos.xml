@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.gastosdiarios.Listview_gastos" >
+
+
+    <TextView
+        android:id="@+id/TxtGastoPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/TxtGastoDescripcion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1"
+        android:inputType="text"
+        android:text="MONTO"
+        android:layout_marginLeft="15dp" />
+  	
+  		<TextView
+  	    android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtGastoFecha"
+        android:inputType="text"
+        android:layout_toRightOf="@+id/TxtGastoCategoria"
+        android:gravity="right"
+        android:text="FECHA"
+         android:layout_marginRight="15dp"
+        />
+
+  		<TextView
+  		    android:id="@+id/TxtGastoCategoria"
+  		    android:layout_width="wrap_content"
+  		    android:layout_height="wrap_content"
+  		    android:layout_alignParentTop="true"
+  		    android:layout_marginLeft="24dp"
+  		    android:layout_toRightOf="@+id/TxtGastoPrecio"
+  		    android:inputType="text"
+  		    android:text="CATEGORIA" />
+
+  		<TextView
+  		    android:id="@+id/TxtGastoDescripcion"
+  		    android:layout_width="wrap_content"
+  		    android:layout_height="wrap_content"
+  		    android:layout_alignLeft="@+id/TxtGastoCategoria"
+  		    android:layout_below="@+id/TxtGastoCategoria"
+  		    android:inputType="text"
+  		    android:text="DESC" />
+
+</RelativeLayout>

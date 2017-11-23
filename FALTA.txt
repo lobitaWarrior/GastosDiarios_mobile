@@ -1,5 +1,6 @@
 validaciones logicas insert/update base datos (como no borrar una categoria q tiene gasto asignado)
 validaciones logicas negocio (como monto no puede ser letra ni 0)
-reporte tdos gastos
+reporte tdos gastos (pantalla finakl)
 llamar a los sp en las pages correpondientes
-reporte pantalla principal
+mensajes de salio todo bien o no en todas pantallas
+order by pantalla principal x fecha y descripcion

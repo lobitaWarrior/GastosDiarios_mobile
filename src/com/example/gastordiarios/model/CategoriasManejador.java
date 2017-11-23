@@ -44,10 +44,9 @@ public class CategoriasManejador {
 		return c.toArray(new Categorias[c.size()]);
 	}
 	
-	public void InsertCategoria(int id, String nombre){
+	public void InsertCategoria(String nombre){
 		ContentValues values = new ContentValues(); 
 		
-		values.put(CategoriasContract.TableCategoria.COLUMN_NAME__ID, id);
 		values.put(CategoriasContract.TableCategoria.COLUMN_NAME_DESCRIPCION,nombre);
 		
 		db.insert(CategoriasContract.TableCategoria.TABLE_NAME, null, values);

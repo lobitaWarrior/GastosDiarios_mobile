@@ -10,5 +10,6 @@
     <string name="title_activity_modificar_categoria">ModificarCategoria</string>
     <string name="title_activity_mod_categoria">ModCategoria</string>
     <string name="title_activity_eliminar_categoria">EliminarCategoria</string>
+    <string name="title_activity_listview_gastos">Listview_gastos</string>
 
 </resources>

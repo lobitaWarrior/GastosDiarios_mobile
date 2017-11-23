@@ -66,6 +66,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gastosdiarios.AbmCategoria" />
         </activity>
+        <activity
+            android:name=".Listview_gastos"
+            android:label="@string/title_activity_listview_gastos" >
+        </activity>
     </application>
 
 </manifest>

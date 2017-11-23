@@ -29,7 +29,7 @@ public class GastosManejador {
 	
 	public Gastos[] SelectTodosGastos(){
 		
-		 String query = "SELECT * FROM Gastos ORDER BY nombre ASC";
+		 String query = "SELECT G.DESCRIPCION,G.MONTO,G.FECHA,G.ID_CATEGORIA, C.NOMBRE FROM GASTOS G LEFT JOIN CATEGORIAS C ON G.ID_CATEGORIA=C.ID ORDER BY G.descripcion ASC";
 		 
 		 Cursor cursor = db.rawQuery(query, null); 
 		 
@@ -38,11 +38,12 @@ public class GastosManejador {
 		 cursor.moveToFirst();
 		 while(!cursor.isAfterLast()){
 			 Gastos object=new Gastos();
-			 object.categoria=cursor.getString(cursor.getColumnIndex("categoria"));
+			 object.categoria=cursor.getString(cursor.getColumnIndex("nombre"));
 			 object.descripcion=cursor.getString(cursor.getColumnIndex("descripcion"));
 			 object.fecha=cursor.getString(cursor.getColumnIndex("fecha"));
-			 object.idCategoria=cursor.getInt(cursor.getColumnIndex("idCategoria"));
+			 object.idCategoria=cursor.getInt(cursor.getColumnIndex("id_categoria"));
 			 object.monto=cursor.getFloat(cursor.getColumnIndex("monto"));
+			 g.add(object);
 			 //LEO CURSOR
 			 cursor.moveToNext();
 		 }
